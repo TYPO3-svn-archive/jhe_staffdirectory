@@ -44,34 +44,188 @@ class tx_jhestaffdirectory_pi1 extends tslib_pibase {
 	var $pi_checkCHash = true;
 	
 	/**
-	 * The main method of the PlugIn
+	 * Main method of your PlugIn
+	 *
+	 * @param	string		$content: The content of the PlugIn
+	 * @param	array		$conf: The PlugIn Configuration
+	 * @return	The content that should be displayed on the website
+	 */
+	function main($content, $conf)	{
+		switch((string)$conf['CMD'])	{
+			case 'singleView':
+				list($t) = explode(':',$this->cObj->currentRecord);
+				$this->internal['currentTable']=$t;
+				$this->internal['currentRow']=$this->cObj->data;
+				return $this->pi_wrapInBaseClass($this->singleView($content, $conf));
+			break;
+			default:
+				if (strstr($this->cObj->currentRecord,'tt_content'))	{
+					$conf['pidList'] = $this->cObj->data['pages'];
+					$conf['recursive'] = $this->cObj->data['recursive'];
+				}
+				return $this->pi_wrapInBaseClass($this->listView($content, $conf));
+			break;
+		}
+	}
+	
+	/**
+	 * Shows a list of database entries
+	 *
+	 * @param	string		$content: content of the PlugIn
+	 * @param	array		$conf: PlugIn Configuration
+	 * @return	HTML list of table entries
+	 */
+	function listView($content, $conf) {
+		$this->conf = $conf;		// Setting the TypoScript passed to this function in $this->conf
+		$this->pi_setPiVarDefaults();
+		$this->pi_loadLL();		// Loading the LOCAL_LANG values
+		
+		$lConf = $this->conf['listView.'];	// Local settings for the listView function
+	
+		if ($this->piVars['showUid'])	{	// If a single element should be displayed:
+			$this->internal['currentTable'] = 'fe_users';
+			$this->internal['currentRow'] = $this->pi_getRecord('fe_users',$this->piVars['showUid']);
+	
+			$content = $this->singleView($content, $conf);
+			return $content;
+		} else {
+			$items=array(
+				'1'=> $this->pi_getLL('list_mode_1','Mode 1'),
+				'2'=> $this->pi_getLL('list_mode_2','Mode 2'),
+				'3'=> $this->pi_getLL('list_mode_3','Mode 3'),
+			);
+			if (!isset($this->piVars['pointer']))	$this->piVars['pointer']=0;
+			if (!isset($this->piVars['mode']))	$this->piVars['mode']=1;
+	
+				// Initializing the query parameters:
+			list($this->internal['orderBy'],$this->internal['descFlag']) = explode(':',$this->piVars['sort']);
+			$this->internal['results_at_a_time']=t3lib_div::intInRange($lConf['results_at_a_time'],0,1000,3);		// Number of results to show in a listing.
+			$this->internal['maxPages']=t3lib_div::intInRange($lConf['maxPages'],0,1000,2);;		// The maximum number of "pages" in the browse-box: "Page 1", "Page 2", etc.
+			$this->internal['searchFieldList']='uid';
+			$this->internal['orderByList']='username';
+			
+				// Get number of records:
+			$res = $this->pi_exec_query('fe_users',1);
+			list($this->internal['res_count']) = $GLOBALS['TYPO3_DB']->sql_fetch_row($res);
+	
+				// Make listing query, pass query to SQL database:
+			$res = $this->pi_exec_query('fe_users');
+			$this->internal['currentTable'] = 'fe_users';
+	
+				// Put the whole list together:
+			$fullTable='';	// Clear var;
+		#	$fullTable.=t3lib_div::view_array($this->piVars);	// DEBUG: Output the content of $this->piVars for debug purposes. REMEMBER to comment out the IP-lock in the debug() function in t3lib/config_default.php if nothing happens when you un-comment this line!
+	
+				// Adds the mode selector.
+			//$fullTable.=$this->pi_list_modeSelector($items);
+	
+				// Adds the whole list table
+			$fullTable.=$this->makelist($res);
+	
+				// Adds the search box:
+			$fullTable.=$this->pi_list_searchBox();
+	
+				// Adds the result browser:
+			$fullTable.=$this->pi_list_browseresults();
+	
+				// Returns the content from the plugin.
+			return $fullTable;
+		}
+	}
+	/**
+	 * Creates a list from a database query
+	 *
+	 * @param	ressource	$res: A database result ressource
+	 * @return	A HTML list if result items
+	 */
+	function makelist($res)	{
+		$items=array();
+			// Make list table rows
+		while($this->internal['currentRow'] = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res))	{
+			$items[]=$this->makeListItem();
+		}
+		
+		$out = '<div'.$this->pi_classParam('listrow').'>
+			'.implode(chr(10),$items).'
+			</div>';
+		return $out;
+	}
+	
+	/**
+	 * Implodes a single row from a database to a single line
+	 *
+	 * @return	Imploded column values
+	 */
+	function makeListItem()	{
+		$out='
+				<p'.$this->pi_classParam('listrowField-username').'>'.$this->getFieldContent('username').' / '.$this->getFieldContent('password').'</p>
+			';
+		return $out;
+	}
+	/**
+	 * Display a single item from the database
 	 *
 	 * @param	string		$content: The PlugIn content
 	 * @param	array		$conf: The PlugIn configuration
-	 * @return	The content that is displayed on the website
+	 * @return	HTML of a single database entry
 	 */
-	function main($content, $conf) {
+	function singleView($content, $conf) {
 		$this->conf = $conf;
 		$this->pi_setPiVarDefaults();
 		$this->pi_loadLL();
 		
 	
-		$content='
-			<h3>Ich bastele mal was...</h3>
-			<strong>This is a few paragraphs:</strong><br />
-			<p>This is line 1</p>
-			<p>This is line 2</p>
+			// This sets the title of the page for use in indexed search results:
+		if ($this->internal['currentRow']['title'])	$GLOBALS['TSFE']->indexedDocTitle=$this->internal['currentRow']['title'];
 	
-			<h3>This is a form:</h3>
-			<form action="'.$this->pi_getPageLink($GLOBALS['TSFE']->id).'" method="POST">
-				<input type="text" name="'.$this->prefixId.'[input_field]" value="'.htmlspecialchars($this->piVars['input_field']).'">
-				<input type="submit" name="'.$this->prefixId.'[submit_button]" value="'.htmlspecialchars($this->pi_getLL('submit_button_label')).'">
-			</form>
-			<br />
-			<p>You can click here to '.$this->pi_linkToPage('get to this page again',$GLOBALS['TSFE']->id).'</p>
-		';
+		$content='<div'.$this->pi_classParam('singleView').'>
+			<H2>Record "'.$this->internal['currentRow']['uid'].'" from table "'.$this->internal['currentTable'].'":</H2>
+				<p'.$this->pi_classParam("singleViewField-username").'><strong>'.$this->getFieldHeader('username').':</strong> '.$this->getFieldContent('username').'</p>
+		<p>'.$this->pi_list_linkSingle($this->pi_getLL('back','Back'),0).'</p></div>'.
+		$this->pi_getEditPanel();
 	
-		return $this->pi_wrapInBaseClass($content);
+		return $content;
+	}
+	/**
+	 * Returns the content of a given field
+	 *
+	 * @param	string		$fN: name of table field
+	 * @return	Value of the field
+	 */
+	function getFieldContent($fN)	{
+		switch($fN) {
+			case 'uid':
+				return $this->pi_list_linkSingle($this->internal['currentRow'][$fN],$this->internal['currentRow']['uid'],1);	// The "1" means that the display of single items is CACHED! Set to zero to disable caching.
+			break;
+			
+			default:
+				return $this->internal['currentRow'][$fN];
+			break;
+		}
+	}
+	/**
+	 * Returns the label for a fieldname from local language array
+	 *
+	 * @param	[type]		$fN: ...
+	 * @return	[type]		...
+	 */
+	function getFieldHeader($fN)	{
+		switch($fN) {
+			
+			default:
+				return $this->pi_getLL('listFieldHeader_'.$fN,'['.$fN.']');
+			break;
+		}
+	}
+	
+	/**
+	 * Returns a sorting link for a column header
+	 *
+	 * @param	string		$fN: Fieldname
+	 * @return	The fieldlabel wrapped in link that contains sorting vars
+	 */
+	function getFieldHeader_sortLink($fN)	{
+		return $this->pi_linkTP_keepPIvars($this->getFieldHeader($fN),array('sort'=>$fN.':'.($this->internal['descFlag']?0:1)));
 	}
 }
 

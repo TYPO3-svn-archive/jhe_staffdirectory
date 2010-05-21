@@ -157,7 +157,14 @@ t3lib_extMgm::addPlugin(array(
 ),'list_type');
 
 
+t3lib_extMgm::addStaticFile($_EXTKEY,'pi1/static/','Staff Directory');
+
+
 if (TYPO3_MODE == 'BE') {
 	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['tx_jhestaffdirectory_pi1_wizicon'] = t3lib_extMgm::extPath($_EXTKEY).'pi1/class.tx_jhestaffdirectory_pi1_wizicon.php';
 }
+
+t3lib_extMgm::addStaticFile($_EXTKEY,'static/jhe_staffdirectory/', 'jhe_staffdirectory');
+
+t3lib_extMgm::addStaticFile($_EXTKEY,'static/jhe_staffdirectory_default_style/', 'jhe_staffdirectory default style');
 ?>
