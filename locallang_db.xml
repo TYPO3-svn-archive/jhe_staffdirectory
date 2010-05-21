@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'jhe_staffdirectory'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="fe_users.tx_jhestaffdirectory_room">Office number</label>
+			<label index="fe_users.tx_jhestaffdirectory_mobile">Mobile phone</label>
+			<label index="fe_users.tx_jhestaffdirectory_personnel_number">Personnel number</label>
+			<label index="fe_users.tx_jhestaffdirectory_cost_unit">Cost unit</label>
+			<label index="fe_users.tx_jhestaffdirectory_function">Function</label>
+			<label index="fe_users.tx_jhestaffdirectory_sector">Sector</label>
+			<label index="fe_users.tx_jhestaffdirectory_further_education">Further education</label>
+			<label index="fe_users.tx_jhestaffdirectory_accreditations">Accreditations</label>
+			<label index="tx_jhestaffdirectory_sectors">Sectors</label>
+			<label index="tx_jhestaffdirectory_sectors.sector_name">Sector name</label>
+			<label index="tx_jhestaffdirectory_further_education">Further education</label>
+			<label index="tx_jhestaffdirectory_further_education.fursther_education_name">Name of further education</label>
+			<label index="tx_jhestaffdirectory_accreditation">Name of accreditation</label>
+			<label index="tx_jhestaffdirectory_accreditation.accreditation_name">Name of accreditation</label>
+			<label index="tt_content.list_type_pi1">Staff Directory</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="fe_users.tx_jhestaffdirectory_room">Büronummer</label>
+			<label index="fe_users.tx_jhestaffdirectory_mobile">Mobilrufnummer</label>
+			<label index="fe_users.tx_jhestaffdirectory_personnel_number">Personalnummer</label>
+			<label index="fe_users.tx_jhestaffdirectory_cost_unit">Kostenstelle</label>
+			<label index="fe_users.tx_jhestaffdirectory_function">Funktion</label>
+			<label index="fe_users.tx_jhestaffdirectory_sector">Branche</label>
+			<label index="fe_users.tx_jhestaffdirectory_further_education">Weiterbildungen</label>
+			<label index="fe_users.tx_jhestaffdirectory_accreditations">Ermächtigungen</label>
+			<label index="tx_jhestaffdirectory_sectors">Branchen</label>
+			<label index="tx_jhestaffdirectory_sectors.sector_name">Branchenname</label>
+			<label index="tx_jhestaffdirectory_further_education">Weiterbildung</label>
+			<label index="tx_jhestaffdirectory_further_education.fursther_education_name">Bezeichnung der Weiterbildung</label>
+			<label index="tx_jhestaffdirectory_accreditation">Bezeichnung der Ermächtigung</label>
+			<label index="tx_jhestaffdirectory_accreditation.accreditation_name">Bezeichnung der Ermächtigung</label>
+			<label index="tt_content.list_type_pi1">Mitarbeiterverzeichnis</label>
+		</languageKey>
+	</data>
+</T3locallang>
