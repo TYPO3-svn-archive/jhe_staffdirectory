@@ -53,6 +53,7 @@ CREATE TABLE fe_users (
 	tx_jhestaffdirectory_mobile varchar(255) DEFAULT '' NOT NULL,
 	tx_jhestaffdirectory_personnel_number varchar(255) DEFAULT '' NOT NULL,
 	tx_jhestaffdirectory_cost_unit varchar(255) DEFAULT '' NOT NULL,
+	tx_jhestaffdirectory_department varchar(255) DEFAULT '' NOT NULL,
 	tx_jhestaffdirectory_function varchar(255) DEFAULT '' NOT NULL,
 	tx_jhestaffdirectory_sector int(11) DEFAULT '0' NOT NULL,
 	tx_jhestaffdirectory_further_education int(11) DEFAULT '0' NOT NULL,

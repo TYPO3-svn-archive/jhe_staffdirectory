@@ -10,6 +10,7 @@
 			<label index="fe_users.tx_jhestaffdirectory_mobile">Mobile phone</label>
 			<label index="fe_users.tx_jhestaffdirectory_personnel_number">Personnel number</label>
 			<label index="fe_users.tx_jhestaffdirectory_cost_unit">Cost unit</label>
+			<label index="fe_users.tx_jhestaffdirectory_department">Department</label>
 			<label index="fe_users.tx_jhestaffdirectory_function">Function</label>
 			<label index="fe_users.tx_jhestaffdirectory_sector">Sector</label>
 			<label index="fe_users.tx_jhestaffdirectory_further_education">Further education</label>
@@ -27,6 +28,7 @@
 			<label index="fe_users.tx_jhestaffdirectory_mobile">Mobilrufnummer</label>
 			<label index="fe_users.tx_jhestaffdirectory_personnel_number">Personalnummer</label>
 			<label index="fe_users.tx_jhestaffdirectory_cost_unit">Kostenstelle</label>
+			<label index="fe_users.tx_jhestaffdirectory_department">Abteilung</label>
 			<label index="fe_users.tx_jhestaffdirectory_function">Funktion</label>
 			<label index="fe_users.tx_jhestaffdirectory_sector">Branche</label>
 			<label index="fe_users.tx_jhestaffdirectory_further_education">Weiterbildungen</label>

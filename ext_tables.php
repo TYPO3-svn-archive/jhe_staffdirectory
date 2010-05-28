@@ -10,8 +10,8 @@ $tempColumns = array (
 			'type' => 'input',	
 			'size' => '10',	
 			'eval' => 'trim',
-		)
-	),
+)
+),
 	'tx_jhestaffdirectory_mobile' => array (		
 		'exclude' => 0,		
 		'label' => 'LLL:EXT:jhe_staffdirectory/locallang_db.xml:fe_users.tx_jhestaffdirectory_mobile',		
@@ -19,8 +19,8 @@ $tempColumns = array (
 			'type' => 'input',	
 			'size' => '20',	
 			'eval' => 'trim',
-		)
-	),
+)
+),
 	'tx_jhestaffdirectory_personnel_number' => array (		
 		'exclude' => 0,		
 		'label' => 'LLL:EXT:jhe_staffdirectory/locallang_db.xml:fe_users.tx_jhestaffdirectory_personnel_number',		
@@ -28,8 +28,8 @@ $tempColumns = array (
 			'type' => 'input',	
 			'size' => '10',	
 			'eval' => 'required,trim',
-		)
-	),
+)
+),
 	'tx_jhestaffdirectory_cost_unit' => array (		
 		'exclude' => 0,		
 		'label' => 'LLL:EXT:jhe_staffdirectory/locallang_db.xml:fe_users.tx_jhestaffdirectory_cost_unit',		
@@ -37,8 +37,17 @@ $tempColumns = array (
 			'type' => 'input',	
 			'size' => '10',	
 			'eval' => 'trim',
-		)
-	),
+)
+),
+	'tx_jhestaffdirectory_department' => array (		
+		'exclude' => 0,		
+		'label' => 'LLL:EXT:jhe_staffdirectory/locallang_db.xml:fe_users.tx_jhestaffdirectory_department',		
+		'config' => array (
+			'type' => 'input',	
+			'size' => '30',	
+			'eval' => 'trim',
+)
+),
 	'tx_jhestaffdirectory_function' => array (		
 		'exclude' => 0,		
 		'label' => 'LLL:EXT:jhe_staffdirectory/locallang_db.xml:fe_users.tx_jhestaffdirectory_function',		
@@ -46,8 +55,8 @@ $tempColumns = array (
 			'type' => 'input',	
 			'size' => '30',	
 			'eval' => 'trim',
-		)
-	),
+)
+),
 	'tx_jhestaffdirectory_sector' => array (		
 		'exclude' => 0,		
 		'label' => 'LLL:EXT:jhe_staffdirectory/locallang_db.xml:fe_users.tx_jhestaffdirectory_sector',		
@@ -59,8 +68,8 @@ $tempColumns = array (
 			'minitems' => 0,
 			'maxitems' => 100,	
 			"MM" => "fe_users_tx_jhestaffdirectory_sector_mm",
-		)
-	),
+)
+),
 	'tx_jhestaffdirectory_further_education' => array (		
 		'exclude' => 0,		
 		'label' => 'LLL:EXT:jhe_staffdirectory/locallang_db.xml:fe_users.tx_jhestaffdirectory_further_education',		
@@ -72,8 +81,8 @@ $tempColumns = array (
 			'minitems' => 0,
 			'maxitems' => 100,	
 			"MM" => "fe_users_tx_jhestaffdirectory_further_education_mm",
-		)
-	),
+)
+),
 	'tx_jhestaffdirectory_accreditations' => array (		
 		'exclude' => 0,		
 		'label' => 'LLL:EXT:jhe_staffdirectory/locallang_db.xml:fe_users.tx_jhestaffdirectory_accreditations',		
@@ -85,14 +94,14 @@ $tempColumns = array (
 			'minitems' => 0,
 			'maxitems' => 100,	
 			"MM" => "fe_users_tx_jhestaffdirectory_accreditations_mm",
-		)
-	),
+)
+),
 );
 
 
 t3lib_div::loadTCA('fe_users');
 t3lib_extMgm::addTCAcolumns('fe_users',$tempColumns,1);
-t3lib_extMgm::addToAllTCAtypes('fe_users','tx_jhestaffdirectory_room;;;;1-1-1, tx_jhestaffdirectory_mobile, tx_jhestaffdirectory_personnel_number, tx_jhestaffdirectory_cost_unit, tx_jhestaffdirectory_function, tx_jhestaffdirectory_sector, tx_jhestaffdirectory_further_education, tx_jhestaffdirectory_accreditations');
+t3lib_extMgm::addToAllTCAtypes('fe_users','tx_jhestaffdirectory_room;;;;1-1-1, tx_jhestaffdirectory_mobile, tx_jhestaffdirectory_personnel_number, tx_jhestaffdirectory_cost_unit, tx_jhestaffdirectory_department, tx_jhestaffdirectory_function, tx_jhestaffdirectory_sector, tx_jhestaffdirectory_further_education, tx_jhestaffdirectory_accreditations');
 
 $TCA['tx_jhestaffdirectory_sectors'] = array (
 	'ctrl' => array (
@@ -105,10 +114,10 @@ $TCA['tx_jhestaffdirectory_sectors'] = array (
 		'delete' => 'deleted',	
 		'enablecolumns' => array (		
 			'disabled' => 'hidden',
-		),
+),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
 		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_jhestaffdirectory_sectors.gif',
-	),
+),
 );
 
 $TCA['tx_jhestaffdirectory_further_education'] = array (
@@ -122,10 +131,10 @@ $TCA['tx_jhestaffdirectory_further_education'] = array (
 		'delete' => 'deleted',	
 		'enablecolumns' => array (		
 			'disabled' => 'hidden',
-		),
+),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
 		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_jhestaffdirectory_further_education.gif',
-	),
+),
 );
 
 $TCA['tx_jhestaffdirectory_accreditation'] = array (
@@ -139,10 +148,10 @@ $TCA['tx_jhestaffdirectory_accreditation'] = array (
 		'delete' => 'deleted',	
 		'enablecolumns' => array (		
 			'disabled' => 'hidden',
-		),
+),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
 		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_jhestaffdirectory_accreditation.gif',
-	),
+),
 );
 
 
@@ -152,8 +161,8 @@ $TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY.'_pi1']='la
 
 t3lib_extMgm::addPlugin(array(
 	'LLL:EXT:jhe_staffdirectory/locallang_db.xml:tt_content.list_type_pi1',
-	$_EXTKEY . '_pi1',
-	t3lib_extMgm::extRelPath($_EXTKEY) . 'ext_icon.gif'
+$_EXTKEY . '_pi1',
+t3lib_extMgm::extRelPath($_EXTKEY) . 'ext_icon.gif'
 ),'list_type');
 
 

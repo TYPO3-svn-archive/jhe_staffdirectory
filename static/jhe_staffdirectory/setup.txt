@@ -1,0 +1,12 @@
+plugin.tx_jhestaffdirectory_pi1.listView {
+  image_stdWrap.wrap = <div class="tx_jhestaffdirectory itemList image">|</div>
+  name_stdWrap.wrap = <div class="tx_jhestaffdirectory itemList nameData">|<br />
+  department_stdWrap.wrap = |<br />
+  function_stdWrap.wrap = |</div>
+  email_stdWrap.wrap = <div class="tx_jhestaffdirectory itemList contactData">|<br />
+  telephone_stdWrap = |</div>
+  more_stdWrap.wrap = <div class="tx_jhestaffdirectory itemList detailLink">|</div>
+  
+  image.file.width = 150
+  
+}
