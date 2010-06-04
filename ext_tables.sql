@@ -45,6 +45,22 @@ CREATE TABLE fe_users_tx_jhestaffdirectory_accreditations_mm (
 
 
 
+
+#
+# Table structure for table 'fe_users_tx_jhestaffdirectory_location_mm'
+# 
+#
+CREATE TABLE fe_users_tx_jhestaffdirectory_location_mm (
+  uid_local int(11) DEFAULT '0' NOT NULL,
+  uid_foreign int(11) DEFAULT '0' NOT NULL,
+  tablenames varchar(30) DEFAULT '' NOT NULL,
+  sorting int(11) DEFAULT '0' NOT NULL,
+  KEY uid_local (uid_local),
+  KEY uid_foreign (uid_foreign)
+);
+
+
+
 #
 # Table structure for table 'fe_users'
 #
@@ -53,11 +69,11 @@ CREATE TABLE fe_users (
 	tx_jhestaffdirectory_mobile varchar(255) DEFAULT '' NOT NULL,
 	tx_jhestaffdirectory_personnel_number varchar(255) DEFAULT '' NOT NULL,
 	tx_jhestaffdirectory_cost_unit varchar(255) DEFAULT '' NOT NULL,
-	tx_jhestaffdirectory_department varchar(255) DEFAULT '' NOT NULL,
 	tx_jhestaffdirectory_function varchar(255) DEFAULT '' NOT NULL,
 	tx_jhestaffdirectory_sector int(11) DEFAULT '0' NOT NULL,
 	tx_jhestaffdirectory_further_education int(11) DEFAULT '0' NOT NULL,
-	tx_jhestaffdirectory_accreditations int(11) DEFAULT '0' NOT NULL
+	tx_jhestaffdirectory_accreditations int(11) DEFAULT '0' NOT NULL,
+	tx_jhestaffdirectory_location int(11) DEFAULT '0' NOT NULL
 );
 
 

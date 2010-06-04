@@ -1,7 +1,0 @@
-plugin.tx_jhestaffdirectory_pi1._CSS_DEFAULT_STYLE (
-  .tx_jhestaffdirectory.itemList {border: 2px solid pink; margin: 0 0 5px 0;padding: 3px;}
-  .tx_jhestaffdirectory.itemList.image {border: 1px solid blue;}
-  .tx_jhestaffdirectory.itemList.nameData {border: 1px solid gray;}
-  .tx_jhestaffdirectory.itemList.contactData {border: 1px solid red;}
-  .tx_jhestaffdirectory.itemList.detailLink {border: 1px solid green;}
-)

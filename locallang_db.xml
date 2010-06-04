@@ -10,11 +10,11 @@
 			<label index="fe_users.tx_jhestaffdirectory_mobile">Mobile phone</label>
 			<label index="fe_users.tx_jhestaffdirectory_personnel_number">Personnel number</label>
 			<label index="fe_users.tx_jhestaffdirectory_cost_unit">Cost unit</label>
-			<label index="fe_users.tx_jhestaffdirectory_department">Department</label>
 			<label index="fe_users.tx_jhestaffdirectory_function">Function</label>
 			<label index="fe_users.tx_jhestaffdirectory_sector">Sector</label>
 			<label index="fe_users.tx_jhestaffdirectory_further_education">Further education</label>
 			<label index="fe_users.tx_jhestaffdirectory_accreditations">Accreditations</label>
+			<label index="fe_users.tx_jhestaffdirectory_location">Location</label>
 			<label index="tx_jhestaffdirectory_sectors">Sectors</label>
 			<label index="tx_jhestaffdirectory_sectors.sector_name">Sector name</label>
 			<label index="tx_jhestaffdirectory_further_education">Further education</label>
@@ -28,11 +28,11 @@
 			<label index="fe_users.tx_jhestaffdirectory_mobile">Mobilrufnummer</label>
 			<label index="fe_users.tx_jhestaffdirectory_personnel_number">Personalnummer</label>
 			<label index="fe_users.tx_jhestaffdirectory_cost_unit">Kostenstelle</label>
-			<label index="fe_users.tx_jhestaffdirectory_department">Abteilung</label>
 			<label index="fe_users.tx_jhestaffdirectory_function">Funktion</label>
 			<label index="fe_users.tx_jhestaffdirectory_sector">Branche</label>
 			<label index="fe_users.tx_jhestaffdirectory_further_education">Weiterbildungen</label>
 			<label index="fe_users.tx_jhestaffdirectory_accreditations">Ermächtigungen</label>
+			<label index="fe_users.tx_jhestaffdirectory_location">Standort</label>
 			<label index="tx_jhestaffdirectory_sectors">Branchen</label>
 			<label index="tx_jhestaffdirectory_sectors.sector_name">Branchenname</label>
 			<label index="tx_jhestaffdirectory_further_education">Weiterbildung</label>
